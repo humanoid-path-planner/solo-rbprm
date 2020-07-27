@@ -7,7 +7,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://solo-rbprm/meshes/solo_trunk.stl"/>
+        <mesh filename="package://solo-rbprm/meshes/solo_all_visual.dae"/>
       </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>

@@ -77,7 +77,7 @@ class Robot (Parent):
     # Path to constraints files used by SL1M:
     kinematic_constraints_path = os.environ["INSTALL_HPP_DIR"] + "/share/solo-rbprm/com_inequalities/feet_quasi_flat/"
     relative_feet_constraints_path = os.environ["INSTALL_HPP_DIR"] + "/share/solo-rbprm/relative_effector_positions/"
-    minDist = 0.2 #  Minimal height of the CoM wrt to the contact height
+    minDist = 0.15 #  Minimal height of the CoM wrt to the contact height
 
     #  Data used by mlp
     limbs_names = [rArmId,rLegId,lArmId,lLegId] #  List of effector used to create contact

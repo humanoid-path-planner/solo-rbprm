@@ -34,7 +34,7 @@ class Robot (Parent):
     srdfSuffix = ""
     name = urdfName
 
-    ref_height = 0.465
+    ref_height = 0.235
 
     rLegId = 'solo_RFleg_rom'
     lLegId = 'solo_LFleg_rom'

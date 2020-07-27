@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.77.0 commit date:2016-04-05, commit time:18:12, hash:abf6f08</authoring_tool>
+    </contributor>
+    <created>2020-07-27T15:10:28</created>
+    <modified>2020-07-27T15:10:28</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_effects>
+    <effect id="rom-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0 0.56 0 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <transparency>
+              <float sid="transparency">0.3</float>
+            </transparency>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="trunk-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.64 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="rom-material" name="rom">
+      <instance_effect url="#rom-effect"/>
+    </material>
+    <material id="trunk-material" name="trunk">
+      <instance_effect url="#trunk-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="HRleg_rom_reduced-mesh" name="HRleg rom reduced">
+      <mesh>
+        <source id="HRleg_rom_reduced-mesh-positions">
+          <float_array id="HRleg_rom_reduced-mesh-positions-array" count="39">-0.301713 -0.01525294 -0.25166 -0.04792797 -0.001684963 -0.277958 -0.202177 0.004749 -0.314965 -0.313588 -0.257896 -0.182246 -0.307523 -0.180849 -0.04236996 -0.324702 -0.08339297 -0.127987 0.09495997 -0.206503 -0.08483695 0.10114 -0.07597196 -0.142672 -0.165385 -0.14303 -0.329407 -0.275168 -0.1569139 -0.284248 -0.194398 -0.294239 -0.249621 -0.04319798 -0.275073 -0.229562 0.03057098 -0.13801 -0.236972</float_array>
+          <technique_common>
+            <accessor source="#HRleg_rom_reduced-mesh-positions-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="HRleg_rom_reduced-mesh-normals">
+          <float_array id="HRleg_rom_reduced-mesh-normals-array" count="66">-0.02384942 0.963427 0.2669075 -0.9912997 -0.09230971 0.09382897 0.1213016 0.397295 0.9096387 0.002708613 0.8777979 0.4790236 0.2365788 0.1526734 -0.9595423 0.01433587 0.6613581 0.7499333 -0.3799619 -0.004201054 -0.9249926 0.00551474 -0.8759989 0.4822816 0.001386642 0.8757475 0.4827677 -0.005604565 -0.878554 0.4776104 0.06768828 -0.9250836 0.3736829 0.7122278 0.2086115 -0.6702335 -0.9066984 -0.07439482 -0.4151672 0.4270288 -0.0258544 -0.9038683 0.8468288 -0.2484563 -0.4702665 -0.9826537 -0.004942297 -0.1853841 0.4163355 -0.2709972 -0.8678856 -0.3055364 -0.3978406 -0.8650841 -0.5471938 0.08892172 -0.8322691 -0.5374447 -0.4892951 -0.686836 0.7461737 -0.429118 -0.5090015 0.1751725 -0.4855386 -0.8564852</float_array>
+          <technique_common>
+            <accessor source="#HRleg_rom_reduced-mesh-normals-array" count="22" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="HRleg_rom_reduced-mesh-vertices">
+          <input semantic="POSITION" source="#HRleg_rom_reduced-mesh-positions"/>
+        </vertices>
+        <polylist material="rom-material" count="22">
+          <input semantic="VERTEX" source="#HRleg_rom_reduced-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#HRleg_rom_reduced-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 1 0 2 0 3 1 4 1 5 1 6 2 7 2 4 2 1 3 0 3 7 3 8 4 2 4 1 4 7 5 5 5 4 5 8 6 9 6 2 6 10 7 4 7 3 7 5 8 7 8 0 8 10 9 6 9 4 9 10 10 11 10 6 10 12 11 1 11 7 11 9 12 3 12 0 12 12 13 8 13 1 13 6 14 12 14 7 14 5 15 0 15 3 15 11 16 8 16 12 16 9 17 8 17 10 17 9 18 0 18 2 18 10 19 3 19 9 19 11 20 12 20 6 20 11 21 10 21 8 21</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="HLleg_rom_reduced-mesh" name="HLleg rom reduced">
+      <mesh>
+        <source id="HLleg_rom_reduced-mesh-positions">
+          <float_array id="HLleg_rom_reduced-mesh-positions-array" count="39">-0.08059495 0.283919 -0.244348 -0.206632 0.09680497 -0.329127 -0.20379 0.279222 -0.264777 -0.1917549 -0.01534396 -0.318965 0.03101098 0.02678298 -0.227149 -0.322687 0.03843694 -0.218888 -0.28295 0.271873 -0.20937 0.08796596 0.218043 -0.111174 -0.330315 0.203812 -0.08034598 -0.287854 0.144716 -0.268832 -0.322732 0.07971495 -0.126905 0.101897 0.09097099 -0.1518819 -0.04280197 0.119917 -0.290616</float_array>
+          <technique_common>
+            <accessor source="#HLleg_rom_reduced-mesh-positions-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="HLleg_rom_reduced-mesh-normals">
+          <float_array id="HLleg_rom_reduced-mesh-normals-array" count="66">0.1424238 0.3273055 -0.9341235 -0.0187413 -0.8907263 0.4541535 -0.04845196 0.9968371 0.06299442 0.001998364 0.8973343 0.441347 0.02972644 0.8795486 0.4748798 -0.5555951 0.3696897 -0.7447441 0.06392234 -0.298095 0.9523935 0.08066385 -0.3458037 0.9348332 0.2360217 -0.05659317 -0.9700984 0.6854452 0.3396539 -0.6440498 0.4100599 -0.2689104 -0.8715149 -0.9968078 -0.07302242 0.03228127 0.6974392 0.06649625 -0.7135523 0.1769831 0.3047989 -0.9358283 0.6606243 0.2937448 -0.6908615 -0.9506311 0.1723446 -0.2580657 -0.4457385 0.3039626 -0.8419762 -0.6457598 -0.1534367 -0.7479649 -0.6379523 -0.146212 -0.7560681 0.05706667 -0.7855435 0.6161696 -0.9413233 0.1720765 -0.2903453 -0.02049446 -0.9121576 0.409327</float_array>
+          <technique_common>
+            <accessor source="#HLleg_rom_reduced-mesh-normals-array" count="22" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="HLleg_rom_reduced-mesh-vertices">
+          <input semantic="POSITION" source="#HLleg_rom_reduced-mesh-positions"/>
+        </vertices>
+        <polylist material="rom-material" count="22">
+          <input semantic="VERTEX" source="#HLleg_rom_reduced-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#HLleg_rom_reduced-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 1 0 2 0 3 1 4 1 5 1 2 2 6 2 0 2 7 3 0 3 8 3 8 4 0 4 6 4 9 5 6 5 2 5 10 6 11 6 7 6 7 7 8 7 10 7 3 8 1 8 12 8 12 9 0 9 11 9 4 10 3 10 12 10 5 11 10 11 8 11 4 12 12 12 11 12 0 13 12 13 1 13 11 14 0 14 7 14 6 15 5 15 8 15 2 16 1 16 9 16 1 17 3 17 9 17 3 18 5 18 9 18 10 19 4 19 11 19 5 20 6 20 9 20 10 21 5 21 4 21</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="FRleg_rom_reduced-mesh" name="FRleg rom reduced">
+      <mesh>
+        <source id="FRleg_rom_reduced-mesh-positions">
+          <float_array id="FRleg_rom_reduced-mesh-positions-array" count="39">0.09110397 -0.09588599 -0.310215 -0.03830695 -0.150062 -0.223232 -0.01580196 -0.02385497 -0.244761 0.214533 -0.106999 -0.328528 0.319285 -0.034949 -0.221622 0.285528 -0.271047 -0.217638 0.317027 -0.149798 -0.03458797 -0.095416 -0.07532197 -0.1436769 -0.099864 -0.207302 -0.08477097 0.06910997 -0.277728 -0.243539 0.329058 -0.23024 -0.136128 0.210204 -0.286244 -0.258058 0.204224 0.019297 -0.316166</float_array>
+          <technique_common>
+            <accessor source="#FRleg_rom_reduced-mesh-positions-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="FRleg_rom_reduced-mesh-normals">
+          <float_array id="FRleg_rom_reduced-mesh-normals-array" count="66">-0.5439389 -0.04593318 -0.8378667 0.7478583 -0.1179516 -0.6532958 -0.1642708 0.4066467 0.8986955 -0.870495 -0.1758364 -0.4596957 -0.4635697 -0.2550696 -0.8485534 -0.338153 -0.7567505 0.5594474 0.04972022 -0.8365821 0.5455809 -0.7943963 0.03824764 -0.6061944 -0.01682072 -0.9251666 0.3791888 -0.006144046 0.8641067 0.5032712 0.9005647 -0.1357303 -0.4129899 -0.001734435 0.8916919 0.4526396 0.01542162 0.8519797 0.5233477 -0.346762 0.2945427 -0.8905059 0.9954549 0.0753256 0.058272 -0.1387127 0.08525234 -0.9866565 0.4972101 -0.3278297 -0.8033118 -0.01814931 -0.9209716 0.3892068 0.664648 0.1263315 -0.7363989 -0.116993 -0.3609265 -0.9252269 -0.1672304 -0.3215169 -0.9320198 -0.694088 -0.5019115 -0.5160687</float_array>
+          <technique_common>
+            <accessor source="#FRleg_rom_reduced-mesh-normals-array" count="22" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="FRleg_rom_reduced-mesh-vertices">
+          <input semantic="POSITION" source="#FRleg_rom_reduced-mesh-positions"/>
+        </vertices>
+        <polylist material="rom-material" count="22">
+          <input semantic="VERTEX" source="#FRleg_rom_reduced-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#FRleg_rom_reduced-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 1 0 2 0 3 1 4 1 5 1 6 2 7 2 8 2 1 3 8 3 7 3 1 4 0 4 9 4 5 5 10 5 6 5 8 6 5 6 6 6 7 7 2 7 1 7 5 8 9 8 11 8 2 9 4 9 12 9 5 10 4 10 10 10 7 11 4 11 2 11 7 12 6 12 4 12 0 13 2 13 12 13 10 14 4 14 6 14 3 15 0 15 12 15 5 16 11 16 3 16 9 17 5 17 8 17 3 18 12 18 4 18 11 19 9 19 3 19 9 20 0 20 3 20 1 21 9 21 8 21</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="FLleg_rom_reduced-mesh" name="FLleg rom reduced">
+      <mesh>
+        <source id="FLleg_rom_reduced-mesh-positions">
+          <float_array id="FLleg_rom_reduced-mesh-positions-array" count="39">-0.05230796 0.112418 -0.214907 0.06060099 0.139494 -0.30165 0.06531697 -0.001127958 -0.285981 -0.090061 0.06101995 -0.166024 0.224517 -0.009599983 -0.304541 0.323414 0.03115296 -0.2115859 0.270427 0.169416 -0.283745 -0.102657 0.197655 -0.07890999 0.320505 0.187932 -0.05384796 0.199666 0.295606 -0.254929 0.180181 0.108203 -0.331652 0.317855 0.243987 -0.1757889 -0.00712496 0.262961 -0.197787</float_array>
+          <technique_common>
+            <accessor source="#FLleg_rom_reduced-mesh-positions-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="FLleg_rom_reduced-mesh-normals">
+          <float_array id="FLleg_rom_reduced-mesh-normals-array" count="66">-0.5890314 -0.1089764 -0.8007286 -0.01944124 -0.9079052 0.4187246 0.007479131 -0.883897 0.467622 0.7027804 -0.09838402 -0.7045711 0.05451005 -0.5332208 0.8442183 -0.05793052 -0.7086024 0.703226 -0.1277992 0.3871233 -0.9131281 -0.8676933 0.2078964 -0.4515389 0.4799566 -0.02120459 -0.877036 0.9995777 0.0276255 -0.009023368 -0.3029583 0.5106828 -0.8046239 0.2466476 0.3450997 -0.9055778 0.1181776 0.9032027 0.4126246 0.6226528 0.4887046 -0.6111231 -0.006847679 0.8787448 0.4772429 -0.6264494 0.2711251 -0.7307889 -0.6493813 -0.2163732 -0.7290312 -0.007967889 0.8795391 0.47576 -0.1256038 -0.2671538 -0.9554333 -0.2700667 -0.1155674 -0.9558808 -0.8172565 0.3011596 -0.4913196 0.8836761 0.09999394 -0.4572941</float_array>
+          <technique_common>
+            <accessor source="#FLleg_rom_reduced-mesh-normals-array" count="22" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="FLleg_rom_reduced-mesh-vertices">
+          <input semantic="POSITION" source="#FLleg_rom_reduced-mesh-positions"/>
+        </vertices>
+        <polylist material="rom-material" count="22">
+          <input semantic="VERTEX" source="#FLleg_rom_reduced-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#FLleg_rom_reduced-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 1 0 2 0 3 1 4 1 5 1 3 2 2 2 4 2 6 3 5 3 4 3 7 4 3 4 5 4 5 5 8 5 7 5 1 6 9 6 10 6 0 7 3 7 7 7 6 8 4 8 10 8 5 9 11 9 8 9 1 10 12 10 9 10 9 11 6 11 10 11 8 12 11 12 9 12 6 13 9 13 11 13 7 14 9 14 12 14 12 15 1 15 0 15 2 16 3 16 0 16 9 17 7 17 8 17 4 18 2 18 10 18 2 19 1 19 10 19 7 20 12 20 0 20 5 21 6 21 11 21</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="Cube-mesh" name="Cube">
+      <mesh>
+        <source id="Cube-mesh-positions">
+          <float_array id="Cube-mesh-positions-array" count="24">-1 -1 -1 -1 -1 1 -1 1 -1 -1 1 1 1 -1 -1 1 -1 1 1 1 -1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube-mesh-normals">
+          <float_array id="Cube-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube-mesh-vertices">
+          <input semantic="POSITION" source="#Cube-mesh-positions"/>
+        </vertices>
+        <polylist material="trunk-material" count="12">
+          <input semantic="VERTEX" source="#Cube-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>3 0 0 0 1 0 7 1 2 1 3 1 5 2 6 2 7 2 1 3 4 3 5 3 2 4 4 4 0 4 7 5 1 5 5 5 3 0 2 0 0 0 7 1 6 1 2 1 5 2 4 2 6 2 1 3 0 3 4 3 2 4 6 4 4 4 7 5 3 5 1 5</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="HRleg_rom_reduced" name="HRleg_rom_reduced" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#HRleg_rom_reduced-mesh" name="HRleg_rom_reduced">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rom-material" target="#rom-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="HLleg_rom_reduced" name="HLleg_rom_reduced" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#HLleg_rom_reduced-mesh" name="HLleg_rom_reduced">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rom-material" target="#rom-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="FRleg_rom_reduced" name="FRleg_rom_reduced" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#FRleg_rom_reduced-mesh" name="FRleg_rom_reduced">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rom-material" target="#rom-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="FLleg_rom_reduced" name="FLleg_rom_reduced" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#FLleg_rom_reduced-mesh" name="FLleg_rom_reduced">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rom-material" target="#rom-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube" name="Cube" type="NODE">
+        <matrix sid="transform">0.25 0 0 0 0 0.17 0 0 0 0 0.07 -0.03798383 0 0 0 1</matrix>
+        <instance_geometry url="#Cube-mesh" name="Cube">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="trunk-material" target="#trunk-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

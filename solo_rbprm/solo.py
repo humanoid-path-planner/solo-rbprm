@@ -49,19 +49,25 @@ class Robot (Parent):
     rarm = 'HR_HAA'
     rhand = 'HR_FOOT'
 
-    referenceConfig = [0., 0., 0.235, 0., 0., 0., 1., # freeflyer
+    referenceConfig = [0., 0., 0.241, 0., 0., 0., 1., # freeflyer
                         0., 0.8, -1.6,  #  FL
                         0., 0.8, -1.6,  #  FR
                         0., -0.8, 1.6,  #  HL
                         0., -0.8, 1.6]  #  HR
 
-    DEFAULT_COM_HEIGHT = 0.211
+    postureWeights=[0,0,0,0,0,0, #FF
+    100.,1.,20.,
+    100.,1.,20.,
+    100.,1.,20.,
+    100.,1.,20.,]
+
+    DEFAULT_COM_HEIGHT = 0.2
 
     # informations required to generate the limbs databases the limbs : 
     nbSamples = 50000 #  Number of sampled configuration for each limb in the database
     octreeSize = 0.002 #  Resolution of the octree leaf (as a cube, in meter)
     cType = "_3_DOF" #  6_dof constraints the orientation of the contacts, 3_dof only constraint the position
-    offset = [0.,0.,-0.005] #  Offset applied to the contact position wrt to the frame position
+    offset = [0.,0.,-0.018] #  Contact position in the effector frame
 
     #  Position on the first joint of each limb (in the root frame) in the 'reference' configration, 
     #  Used by some heuristic when sorting candidates contacts positions
@@ -106,10 +112,10 @@ class Robot (Parent):
                                    rArmId:ref_EE_rArm,
                                    lArmId:ref_EE_lArm}
     # display transform :
-    MRsole_display = SE3.Identity()
-    MLsole_display = SE3.Identity()
-    MRhand_display = SE3.Identity()
-    MLhand_display = SE3.Identity()
+    MRsole_display = MRsole_offset.copy()
+    MLsole_display = MLsole_offset.copy()
+    MRhand_display = MRhand_offset.copy()
+    MLhand_display = MLhand_offset.copy()
     dict_display_offset = {rfoot:MRsole_display, lfoot:MLsole_display, rhand:MRhand_display, lhand:MLhand_display}
 
     kneeIds = {"LF":9,"LH":12,"RF":15,"HR":18}

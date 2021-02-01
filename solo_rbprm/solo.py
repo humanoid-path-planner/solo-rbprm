@@ -86,7 +86,7 @@ class Robot (Parent):
     minDist = 0.15 #  Minimal height of the CoM wrt to the contact height
 
     #  Data used by mlp
-    limbs_names = [rArmId,rLegId,lArmId,lLegId] #  List of effector used to create contact
+    limbs_names = [rArmId, lArmId, lLegId, rLegId] #  List of effector used to create contact
     dict_limb_rootJoint = {rLegId:rleg, lLegId:lleg, rArmId:rarm, lArmId:larm}
     dict_limb_joint = {rLegId:rfoot, lLegId:lfoot, rArmId:rhand, lArmId:lhand}
     dict_limb_color_traj = {rfoot:[0,1,0,1], lfoot:[1,0,0,1],rhand:[0,0,1,1],lhand:[0.9,0.5,0,1]}
@@ -118,7 +118,7 @@ class Robot (Parent):
     MLhand_display = MLhand_offset.copy()
     dict_display_offset = {rfoot:MRsole_display, lfoot:MLsole_display, rhand:MRhand_display, lhand:MLhand_display}
 
-    kneeIds = {"LF":9,"LH":12,"RF":15,"HR":18}
+    kneeIds = {"FL":9,"HL":12,"FR":15,"HR":18}
 
 
     def __init__(self, name=None, load=True, client=None, clientRbprm=None):

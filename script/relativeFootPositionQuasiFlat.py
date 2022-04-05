@@ -1,9 +1,11 @@
 from hpp.gepetto import ViewerFactory
 from numpy import array, zeros, ones
+
 # from numpy.linalg import norm
 # import numpy as np
 
 from solo_rbprm.solo import Robot
+
 # from hpp.corbaserver.rbprm.tools.display_tools import *
 
 # from plot_polytopes import *
@@ -24,7 +26,8 @@ MIN_DIST_BETWEEN_FEET_X = 0.02
 MAX_DIST_BETWEEN_FEET_X = 0.2
 MAX_DIST_BETWEEN_FEET_Z = 0.2
 MIN_HEIGHT_COM = 0.13
-# margin used to constrain the com y position : if it's on the left of the left foot or on the right of the right foot
+# margin used to constrain the com y position : if it's on the left of the left foot
+# or on the right of the right foot
 # for more than this margin, we reject this sample:
 MARGIN_FEET_SIDE = 0.01
 
@@ -36,7 +39,7 @@ dict_heuristic = {
     fullBody.rLegId: "static",
     fullBody.lLegId: "static",
     fullBody.rArmId: "fixedStep04",
-    fullBody.lArmId: "fixedStep04"
+    fullBody.lArmId: "fixedStep04",
 }
 fullBody.loadAllLimbs(dict_heuristic, "ReferenceConfiguration", nbSamples=12)
 
@@ -47,9 +50,9 @@ nbSamples = 1
 ps = ProblemSolver(fullBody)
 vf = ViewerFactory(ps)
 v = vf.createViewer()
-rootName = 'root_joint'
+rootName = "root_joint"
 
-zero = [0., 0., 0.]
+zero = [0.0, 0.0, 0.0]
 rLegId = fullBody.rLegId
 rLeg = fullBody.rleg
 rfoot = fullBody.rfoot
@@ -64,7 +67,7 @@ lfoot = fullBody.lfoot
 
 # make sure this is 0
 q_0 = fullBody.getCurrentConfig()
-zeroConf = [0, 0, 0, 0, 0, 0, 1.]
+zeroConf = [0, 0, 0, 0, 0, 0, 1.0]
 q_0[0:7] = zeroConf
 fullBody.setCurrentConfig(q_0)
 
@@ -96,24 +99,29 @@ def staticEq(positions, com):
     E = zeros((3, sizeX))
     for i, pos in enumerate(positions):
         E[:2, i] = pos[:2]
-    e = array([com[0], com[1], 1.])
+    e = array([com[0], com[1], 1.0])
     E[2, :] = ones(sizeX)
-    res = linprog(ones(sizeX),
-                  A_ub=None,
-                  b_ub=None,
-                  A_eq=E,
-                  b_eq=e,
-                  bounds=[(0., 1.) for _ in range(sizeX)],
-                  method='interior-point',
-                  callback=None,
-                  options={'presolve': True})
-    return res['success']
+    res = linprog(
+        ones(sizeX),
+        A_ub=None,
+        b_ub=None,
+        A_eq=E,
+        b_eq=e,
+        bounds=[(0.0, 1.0) for _ in range(sizeX)],
+        method="interior-point",
+        callback=None,
+        options={"presolve": True},
+    )
+    return res["success"]
 
 
-# returns true of one of the point is inside the convex hulls of the others. We do not want that
 def pointInsideHull(positions):
+    """
+    returns true of one of the point is inside the convex hulls of the others.
+    We do not want that
+    """
     for i, pos in enumerate(positions):
-        others = positions[:i] + positions[i + 1:]
+        others = positions[:i] + positions[i + 1 :]
         if staticEq(others, pos):
             return True
     return False
@@ -132,7 +140,9 @@ def genFlat(init=False):
     s = State(fullBody, q=q, limbsIncontact=limbIds)
     succ = True
     for effId, pos in zip(limbIds, positions):
-        s, succ = StateHelper.addNewContact(s, effId, pos, [0., 0., 1.], num_max_sample=0)
+        s, succ = StateHelper.addNewContact(
+            s, effId, pos, [0.0, 0.0, 1.0], num_max_sample=0
+        )
         if not succ:
             break
 
@@ -140,11 +150,12 @@ def genFlat(init=False):
     # poslf = fullBody.getJointPosition(lfoot)[:3]
     # print ("limbsIds ", limbIds)
     # s = State(fullBody, q = q, limbsIncontact = limbIds)
-    # s, succ = StateHelper.addNewContact(s, rLegId, posrf, [0.,0.,1.], num_max_sample = 0)
+    # s, succ = StateHelper.addNewContact(s, rLegId, posrf, [0.,0.,1.],num_max_sample=0)
     # if succ:
-    # s, succ = StateHelper.addNewContact(s, lLegId, poslf, [0.,0.,1.], num_max_sample = 0)
+    # s, succ = StateHelper.addNewContact(s, lLegId, poslf, [0.,0.,1.],num_max_sample=0)
     if succ:
-        # ~ succ = fullBody.isConfigValid(q)[0] and norm (array(posrf[:2]) - array(poslf[:2]) ) >= 0.3
+        # ~ succ = fullBody.isConfigValid(q)[0]
+        # ~        and norm (array(posrf[:2]) - array(poslf[:2]) ) >= 0.3
         succ = fullBody.isConfigValid(q)[0]
 
     # assert that in static equilibrium
@@ -174,21 +185,26 @@ def printFootPositionRelativeToOther(nbConfigs):
             success += 1
             addCom = True
             for j, effectorName in enumerate(effectors):
-                for otheridx, (oeffectorName, limbId) in enumerate(zip(effectors, limbIds)):
+                for otheridx, (oeffectorName, limbId) in enumerate(
+                    zip(effectors, limbIds)
+                ):
                     if otheridx != j:
                         fullBody.setCurrentConfig(q)
                         pos_other = fullBody.getJointPosition(oeffectorName)
                         pos = fullBody.getJointPosition(effectorName)
                         p = array(pos_other[:3]) - array(pos[:3]).tolist()
                         # ~ qtr = q[:]
-                        # ~ qtr[:3] = [qtr[0] - pos_other[0], qtr[1] - pos_other[1], qtr[2] - pos_other[2]]
+                        # ~ qtr[:3] = [qtr[0] - pos_other[0], qtr[1] - pos_other[1],
+                        # ~           qtr[2] - pos_other[2]]
                         # ~ fullBody.setCurrentConfig(qtr)
                         # ~ qEffector = fullBody.getJointPosition(effectorName)
 
                         # check current joint pos is now zero
-                        # ~ q0 = Quaternion(qEffector[6], qEffector[3], qEffector[4], qEffector[5])
+                        # ~ q0 = Quaternion(qEffector[6], qEffector[3], qEffector[4],
+                        # ~                 qEffector[5])
                         # ~ rot = q0.matrix()  # compute rotation matrix world -> local
-                        # ~ p = qEffector[0:3]  # (0,0,0) coordinate expressed in effector fram
+                        # (0,0,0) coordinate expressed in effector fram
+                        # ~ p = qEffector[0:3]
                         # ~ rm = np.zeros((4, 4))
                         # ~ for k in range(0, 3):
                         # ~ for l in range(0, 3):
@@ -198,24 +214,34 @@ def printFootPositionRelativeToOther(nbConfigs):
                         # ~ rm[3, 3] = 1
                         # ~ invrm = np.linalg.inv(rm)
                         # ~ p = invrm.dot([0, 0, 0., 1])
-                        if (MAX_DIST_BETWEEN_FEET_Z > abs(p[2])):
-                            if (MIN_DIST_BETWEEN_FEET_Y <= abs(p[1])):
-                                if (MIN_DIST_BETWEEN_FEET_X <= abs(p[0])):
-                                    # this is not what we want to do in theory but it works well in fact
+                        if MAX_DIST_BETWEEN_FEET_Z > abs(p[2]):
+                            if MIN_DIST_BETWEEN_FEET_Y <= abs(p[1]):
+                                if MIN_DIST_BETWEEN_FEET_X <= abs(p[0]):
+                                    # this is not what we want to do in theory
+                                    # but it works well in fact
                                     points[j][oeffectorName].append(p[:3])
                                 else:
                                     addCom = False
                             else:
                                 addCom = False
                         else:
-                            print('rejecting ', effectorName, ' ', oeffectorName, p, abs(p[2]))
+                            print(
+                                "rejecting ",
+                                effectorName,
+                                " ",
+                                oeffectorName,
+                                p,
+                                abs(p[2]),
+                            )
                             # ~ print ('pos_other', pos_other)
                             # ~ print ('old_pos', old_pos)
                             addCom = False
                             v(q)
-                        # ~ if (j == 0 and p[1] > MIN_DIST_BETWEEN_FEET_Y and abs(p[0]) < MAX_DIST_BETWEEN_FEET_X):
+                        # ~ if (j == 0 and p[1] > MIN_DIST_BETWEEN_FEET_Y
+                        # ~         and abs(p[0]) < MAX_DIST_BETWEEN_FEET_X):
                         # ~ points[j].append(p[:3])
-                        # ~ elif (j == 1 and p[1] < -MIN_DIST_BETWEEN_FEET_Y and abs(p[0]) < MAX_DIST_BETWEEN_FEET_X):
+                        # ~ elif (j == 1 and p[1] < -MIN_DIST_BETWEEN_FEET_Y
+                        #           and abs(p[0]) < MAX_DIST_BETWEEN_FEET_X):
                         # ~ points[j].append(p[:3])
                         # ~ else:
                         # ~ addCom =
@@ -223,14 +249,15 @@ def printFootPositionRelativeToOther(nbConfigs):
 
             fullBody.setCurrentConfig(q)
             com = array(fullBody.getCenterOfMass())
-            print('com ', com)
+            print("com ", com)
             # ~ for x in range(0, 3):
             # ~ q[x] = -com[x]
             for j, effectorName in enumerate(effectors):
                 pos = fullBody.getJointPosition(effectorName)
                 rp = array(com) - array(pos[:3]).tolist()
                 # ~ qEffector = fullBody.getJointPosition(effectorName)
-                # ~ q0 = Quaternion(qEffector[6], qEffector[3], qEffector[4], qEffector[5])
+                # ~ q0 = Quaternion(qEffector[6], qEffector[3], qEffector[4],
+                # ~                 qEffector[5])
                 # ~ rot = q0.matrix()  # compute rotation matrix world -> local
                 # ~ p = qEffector[0:3]  # (0,0,0) coordinate expressed in effector fram
                 # ~ rm = np.zeros((4, 4))
@@ -245,7 +272,7 @@ def printFootPositionRelativeToOther(nbConfigs):
                 # ~ # add offset
                 # ~ rp = array(p[:3] - offsets[j]).tolist()
 
-                if (rp[2] < MIN_HEIGHT_COM):
+                if rp[2] < MIN_HEIGHT_COM:
                     addCom = False
                     print("reject min heught")
                 if addCom:
@@ -268,7 +295,9 @@ def printFootPositionRelativeToOther(nbConfigs):
     # f1.close()
 
 
-s = State(fullBody, q=fullBody.referenceConfig, limbsIncontact=[fullBody.limbs_names[0]])
+s = State(
+    fullBody, q=fullBody.referenceConfig, limbsIncontact=[fullBody.limbs_names[0]]
+)
 v(s.q())
 
 # printRootPosition(rLegId, rfoot, nbSamples)
@@ -280,14 +309,22 @@ print("successes ", success)
 print("fails  ", fails)
 
 # ~ for effector, comData, pointsData in zip(effectors, compoints, points):
-# ~ for effector, limbId, comData, pointsData in zip(effectors[:1],limbIds[1:], compoints[:1], points[:1]):
+# ~ for effector, limbId, comData, pointsData in zip(effectors[:1],limbIds[1:],
+# ~                                                  compoints[:1], points[:1]):
 for effector, limbId, comData, pointsData in zip(effectors, limbIds, compoints, points):
     # comData_array = np.array(comData)
     # print("com data shape : ", comData_array.shape)
     hcom = ConvexHull(comData)
-    hull_to_obj(hcom, comData, "COM_constraints_in_" + str(limbId) + "_effector_frame_quasi_static.obj")
+    hull_to_obj(
+        hcom,
+        comData,
+        "COM_constraints_in_" + str(limbId) + "_effector_frame_quasi_static.obj",
+    )
     fig = plt.figure()
-    fig.suptitle("COM_constraints_in_" + str(limbId) + "_effector_frame_quasi_static.obj", fontsize=16)
+    fig.suptitle(
+        "COM_constraints_in_" + str(limbId) + "_effector_frame_quasi_static.obj",
+        fontsize=16,
+    )
     plot_hull(hcom, comData, array(comData), color="r", plot=False, fig=fig, ax=None)
 
     fig = plt.figure()
@@ -298,7 +335,9 @@ for effector, limbId, comData, pointsData in zip(effectors, limbIds, compoints, 
     for (oEffector, pts) in pointsData.items():
         # ~ ax = fig.add_subplot(axId, projection="3d")
         hpts = ConvexHull(pts)
-        hull_to_obj(hpts, pts, str(oEffector) + "_constraints_in_" + str(limbId) + ".obj")
+        hull_to_obj(
+            hpts, pts, str(oEffector) + "_constraints_in_" + str(limbId) + ".obj"
+        )
         print("ax ", ax)
         ax = plot_hull(hpts, pts, array(pts), color="b", plot=False, fig=fig, ax=ax)
         print("effector ", limbId)

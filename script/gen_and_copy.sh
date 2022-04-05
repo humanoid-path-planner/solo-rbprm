@@ -1,4 +1,4 @@
-#!/bin/bash         
+#!/bin/bash
 
 cd $DEVEL_DIR/src/solo-rbprm/script;
 starthpp relativeFootPositionQuasiFlat.py

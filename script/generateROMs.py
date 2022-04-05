@@ -16,7 +16,7 @@ ps = ProblemSolver(fullBody)
 
 r = Viewer(ps)
 
-rootName = 'base_joint_xyz'
+rootName = "base_joint_xyz"
 
 q_0 = fullBody.referenceConfig
 
@@ -27,7 +27,7 @@ dict_heuristic = {
     fullBody.rLegId: "static",
     fullBody.lLegId: "static",
     fullBody.rArmId: "fixedStep04",
-    fullBody.lArmId: "fixedStep04"
+    fullBody.lArmId: "fixedStep04",
 }
 fullBody.loadAllLimbs(dict_heuristic, "ReferenceConfiguration", nbSamples=nbSamples)
 
@@ -47,7 +47,9 @@ for limbId in fullBody.limbs_names:
     hull_to_obj(rom_hull, positions, str(limbId) + "_rom.obj")
     fig = plt.figure()
     fig.suptitle(str(limbId) + "_rom.obj", fontsize=16)
-    plot_hull(rom_hull, positions, array(positions), color="r", plot=False, fig=fig, ax=None)
+    plot_hull(
+        rom_hull, positions, array(positions), color="r", plot=False, fig=fig, ax=None
+    )
 
     fig = plt.figure()
     fig.suptitle(str(limbId), fontsize=16)

@@ -1,1 +1,1 @@
-include: https://rainboard.laas.fr/project/solo-rbprm/.gitlab-ci.yml
+include: http://rainboard.laas.fr/project/solo-rbprm/.gitlab-ci.yml

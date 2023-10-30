@@ -1,23 +1,24 @@
-from hpp.gepetto import ViewerFactory
-from numpy import array, zeros, ones
-
-# from numpy.linalg import norm
-# import numpy as np
-
-from solo_rbprm.solo import Robot
-
-# from hpp.corbaserver.rbprm.tools.display_tools import *
+import matplotlib.pyplot as plt
+from constants_and_tools import hull_to_obj
 
 # from plot_polytopes import *
 # from pinocchio import Quaternion
 from hpp.corbaserver import ProblemSolver
-
 from hpp.corbaserver.rbprm.rbprmstate import State, StateHelper
-from scipy.spatial import ConvexHull
-from constants_and_tools import hull_to_obj
-from scipy.optimize import linprog
-import matplotlib.pyplot as plt
+from hpp.gepetto import ViewerFactory
+from numpy import array, ones, zeros
 from plot_polytopes import plot_hull
+from scipy.optimize import linprog
+from scipy.spatial import ConvexHull
+
+from solo_rbprm.solo import Robot
+
+# from numpy.linalg import norm
+# import numpy as np
+
+
+# from hpp.corbaserver.rbprm.tools.display_tools import *
+
 
 NUM_SAMPLES = 6000
 IT_DISPLAY_PROGRESS = NUM_SAMPLES / 10

@@ -1,19 +1,16 @@
+import matplotlib.pyplot as plt
 import numpy as np
+from constants_and_tools import genPolytope
 
 # from hpp_centroidal_dynamics import *
 # from curves import *
 from numpy import array
-
 from scipy.spatial import ConvexHull
 
 # from hpp_bezier_com_traj import *
 # from qp import solve_lp
 
 # ~ import cdd
-
-from constants_and_tools import genPolytope
-
-import matplotlib.pyplot as plt
 
 
 def plot_hull_in_subplot(hull, pts, apts, ax, color="r", just_pts=False):

@@ -1,7 +1,8 @@
 # do the loading of the obj file
-import numpy as np
 from collections import namedtuple
 from pickle import dump, load
+
+import numpy as np
 
 ObjectData = namedtuple("ObjectData", "V T N F")
 Inequalities = namedtuple("Inequality", "A b N V")

@@ -1,12 +1,12 @@
-from solo_rbprm.solo import Robot
-from hpp.gepetto import Viewer
-from hpp.corbaserver.problem_solver import ProblemSolver
-from numpy import array
-
-from scipy.spatial import ConvexHull
-from constants_and_tools import hull_to_obj
-from plot_polytopes import plot_hull
 import matplotlib.pyplot as plt
+from constants_and_tools import hull_to_obj
+from hpp.corbaserver.problem_solver import ProblemSolver
+from hpp.gepetto import Viewer
+from numpy import array
+from plot_polytopes import plot_hull
+from scipy.spatial import ConvexHull
+
+from solo_rbprm.solo import Robot
 
 fullBody = Robot()
 

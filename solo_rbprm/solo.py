@@ -17,9 +17,10 @@
 # <http://www.gnu.org/licenses/>.
 
 import os
+
+import numpy as np
 from hpp.corbaserver.rbprm.rbprmfullbody import FullBody as Parent
 from pinocchio import SE3
-import numpy as np
 
 
 class Robot(Parent):

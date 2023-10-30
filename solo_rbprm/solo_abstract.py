@@ -20,7 +20,6 @@ from hpp.corbaserver.rbprm.rbprmbuilder import Builder as Parent
 
 
 class Robot(Parent):
-
     ##
     #  Information to retrieve urdf and srdf files.
     rootJointType = "freeflyer"
